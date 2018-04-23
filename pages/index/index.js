@@ -7,7 +7,10 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    animation:'',
+    interval:2000,
+    arrowDisplay:true
   },
   //事件处理函数
   bindViewTap: function() {
@@ -43,12 +46,46 @@ Page({
       })
     }
   },
+  onReady:function(){
+       this.doAnimation()
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+
+
+  doAnimation : function(){
+    console.log(this.data.arrowDisplay)
+    this.animation = wx.createAnimation({
+      duration: this.data.interval,
+      timingFunction: 'linear'
+    });
+    this.animation.opacity(0).step()
+    this.setData({
+      animation: this.animation.export()
+    })
+    if(this.data.arrowDisplay){
+    setTimeout(function () {
+      this.animation.opacity(1).step()
+      this.setData({
+        animation: this.animation.export()
+      })
+      setTimeout(function () {
+          this.doAnimation()
+      }.bind(this), this.data.interval)
+    }.bind(this), this.data.interval)
+    }
+  },
+  bindchangeTag : function(e){
+    this.c = e.detail.current;
+    this.setData({
+      arrowDisplay:false,
+      interval:100
     })
   }
 })

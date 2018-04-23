@@ -1,30 +1,28 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "Universe",
+    "navigationBarTextStyle":"#000"
   },
   "tabBar": {
-    "color": "#a9b7b7",
+    "color": "#fff",
     "selectedColor": "#11cd6e",
-    "borderStyle": "white",
+    "borderStyle": "#000",
+    "backgroundColor": "#000",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "Space"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "日志"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "开心测试"
+        "pagePath": "pages/login/login",
+        "text": "Login"
       }
     ]
   }
